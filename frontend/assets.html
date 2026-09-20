@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Digital Assets</title>
+
+    <link
+        rel="stylesheet"
+        href="css/dashboard.css"
+    >
+
+</head>
+
+<body>
+
+<nav>
+
+    <div class="logo">
+        BEL | Digital Assets
+    </div>
+
+    <div id="wallet">
+        <button id="pageConnectWallet">Connect Wallet</button>
+        <span id="pageWalletStatus">Not connected</span>
+    </div>
+
+</nav>
+
+
+<main>
+
+    <h1>Digital Assets</h1>
+
+
+    <div class="card">
+
+        <h2>Mint Asset</h2>
+
+        <button id="enableAssetPermissionsButton">
+            Enable Owner Asset Permissions
+        </button>
+
+        <input
+            id="assetName"
+            placeholder="Asset name"
+        >
+
+        <input
+            id="metadataURI"
+            placeholder="Metadata URI"
+        >
+
+        <input
+            id="assetType"
+            placeholder="Asset type"
+        >
+
+        <label>
+            <input id="assetActive" type="checkbox" checked>
+            Active asset
+        </label>
+
+        <button id="mintButton">
+            Mint Asset
+        </button>
+        <div id="mintResult" class="result-panel"><p class="result-message"></p><p class="result-data"></p><a class="result-link" target="_blank" rel="noreferrer"></a></div>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>Assign Asset</h2>
+
+        <input
+            id="tokenId"
+            type="number"
+            placeholder="Token ID"
+        >
+
+        <input
+            id="owner"
+            placeholder="Owner address"
+        >
+
+        <input
+            id="assetDID"
+            placeholder="Recipient DID"
+        >
+
+        <button id="assignButton">
+            Assign
+        </button>
+        <div id="assignResult" class="result-panel"><p class="result-message"></p><p class="result-data"></p><a class="result-link" target="_blank" rel="noreferrer"></a></div>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>Asset History</h2>
+
+        <input
+            id="historyToken"
+            type="number"
+            placeholder="Token ID"
+        >
+
+        <button id="historyButton">
+            View History
+        </button>
+
+        <div id="history"></div>
+        <div id="historyResult" class="result-panel"><p class="result-message"></p><p class="result-data"></p><a class="result-link" target="_blank" rel="noreferrer"></a></div>
+
+    </div>
+
+    <div class="card">
+        <h2>Update Asset State</h2>
+
+        <input id="stateTokenId" type="number" placeholder="Token ID">
+        <select id="assetState">
+            <option value="0">Created</option>
+            <option value="1">Allocated</option>
+            <option value="2">In use</option>
+            <option value="3">Maintenance</option>
+            <option value="4">Returned</option>
+            <option value="5">Decommissioned</option>
+        </select>
+        <button id="updateStateButton">Update State</button>
+        <div id="stateResult" class="result-panel"><p class="result-message"></p><p class="result-data"></p><a class="result-link" target="_blank" rel="noreferrer"></a></div>
+    </div>
+
+    <div class="card">
+        <h2>Transfer Asset Record</h2>
+
+        <input id="transferTokenId" type="number" placeholder="Current token ID">
+        <input id="newTokenId" type="number" placeholder="New token ID">
+        <input id="newOwnerAddress" placeholder="New owner address">
+        <button id="transferAssetButton">Transfer Asset</button>
+        <div id="transferResult" class="result-panel"><p class="result-message"></p><p class="result-data"></p><a class="result-link" target="_blank" rel="noreferrer"></a></div>
+    </div>
+
+    <div class="card">
+        <h2>ERC-721 Operations</h2>
+        <input id="approvalAddress" placeholder="Approval or recipient address">
+        <input id="approvalTokenId" type="number" placeholder="Token ID">
+        <button id="approveButton">Approve Token</button>
+        <label><input id="operatorApproved" type="checkbox" checked> Operator approved</label>
+        <button id="setOperatorButton">Set Operator</button>
+        <button id="transferFromButton">Transfer From</button>
+        <input id="transferFromAddress" placeholder="Current owner address">
+        <input id="transferToAddress" placeholder="Recipient address">
+        <div id="erc721Result" class="result-panel"><p class="result-message"></p><p class="result-data"></p><a class="result-link" target="_blank" rel="noreferrer"></a></div>
+    </div>
+
+    <p id="assetStatus"></p>
+
+</main>
+
+
+<script
+    type="module"
+    src="js/assets.js"
+></script>
+<script type="module" src="js/page-wallet.js"></script>
+
+</body>
+
+</html>

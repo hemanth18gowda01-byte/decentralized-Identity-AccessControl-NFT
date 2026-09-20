@@ -1,0 +1,30 @@
+{
+  "name": "NFT #003",
+  "description": "BEL Electronics digital asset",
+  "image": "assets/NFT #001.png",
+  "external_url": "",
+  "attributes": [
+    {
+      "trait_type": "Asset Type",
+      "value": "car"
+    },
+    {
+      "trait_type": "Status",
+      "value": "Active"
+    },
+    {
+      "trait_type": "Token ID",
+      "value": "3"
+    },
+    {
+      "trait_type": "DID",
+      "value": ""
+    }
+  ],
+  "blockchain": {
+    "token_id": 3,
+    "metadata_uri": "http://127.0.0.1:5174/assets/NFT_#001.json",
+    "created_by": "0x29d7f532a8a271cbaf1f27f2312bf2188612e929",
+    "transaction_hash": "0xda27b08a3cacc529cf6385c88be53dd85e78e2bff6ce5977492970904d8f0266"
+  }
+}

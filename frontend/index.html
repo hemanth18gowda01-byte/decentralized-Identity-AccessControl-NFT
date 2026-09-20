@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BEL Secure Identity</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="three-background"></div>
+
+    <header class="topbar">
+        <div class="brand-wrap">
+            <div class="brand-mark">BEL</div>
+            <div class="brand-copy">
+                <span class="brand-name">Bharat Electronics Limited</span>
+                <small>Secure Identity Network</small>
+            </div>
+        </div>
+    </header>
+
+    <main class="landing">
+        <section class="hero glass-panel">
+            <div class="badge">BLOCKCHAIN IDENTITY INFRASTRUCTURE</div>
+
+            <div class="hero-grid">
+                <div class="hero-copy">
+                    <h1>
+                        Secure Identity.
+                        <br>
+                        <span>Decentralized Trust.</span>
+                    </h1>
+
+                    <p>
+                        Manage digital identities, control access, and secure industrial asset ownership
+                        on a trusted blockchain layer built for enterprise operations.
+                    </p>
+
+                    <div class="cta-row">
+                        <button id="connectWallet" class="primary-btn">Connect MetaMask</button>
+                        <button class="secondary-btn" type="button" onclick="window.location.href='dashboard.html'">Open Dashboard</button>
+                    </div>
+
+                    <div id="walletStatus" class="wallet-status">Wallet not connected</div>
+                </div>
+
+                <div class="meta-card glass-panel">
+                    <div class="mini-label">Live Portal</div>
+                    <ul>
+                        <li>Identity verification</li>
+                        <li>Role-based access</li>
+                        <li>Asset lifecycle tracking</li>
+                        <li>Marketplace settlement</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="three/scene.js"></script>
+    <script type="module" src="js/wallet.js"></script>
+</body>
+
+</html>

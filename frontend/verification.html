@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ZK Verification</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">BEL | ZK Verification</div>
+</nav>
+
+<main>
+
+    <h1>Zero-Knowledge Verification</h1>
+
+    <div class="card">
+
+        <h2>Credential Verification</h2>
+
+        <p>
+            Prove that a private credential satisfies a requirement
+            without revealing the underlying private information.
+        </p>
+
+        <input
+            id="did"
+            placeholder="DID"
+        >
+
+        <select id="verificationType">
+
+            <option value="role">
+                Role Verification
+            </option>
+
+            <option value="age">
+                Age Requirement
+            </option>
+
+            <option value="credential">
+                Credential Validity
+            </option>
+
+        </select>
+
+        <button id="generateProofButton">
+            Generate Proof
+        </button>
+
+        <p id="proofStatus">
+            No proof generated
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>Verify Proof</h2>
+
+        <textarea
+            id="proof"
+            placeholder="Generated ZK proof"
+        ></textarea>
+
+        <button id="verifyProofButton">
+            Verify Proof
+        </button>
+
+        <p id="verificationResult"></p>
+
+    </div>
+
+</main>
+
+<script
+    type="module"
+    src="js/verification.js"
+></script>
+
+</body>
+</html>

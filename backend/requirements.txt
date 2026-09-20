@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+web3
+cryptography
+eth-account
+python-multipart

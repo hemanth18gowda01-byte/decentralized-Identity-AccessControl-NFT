@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decentralized Identity</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+<nav>
+    <div class="logo">BEL | Identity</div>
+    <div id="wallet">
+        <button id="pageConnectWallet">Connect Wallet</button>
+        <span id="pageWalletStatus">Not connected</span>
+    </div>
+</nav>
+
+<main>
+    <header class="page-heading">
+        <div class="eyebrow">Identity Registry</div>
+        <h1>Decentralized Identity</h1>
+        <p>Create and manage DID records on Sepolia. Every action below maps to one contract function and reports its result here.</p>
+    </header>
+
+    <div class="card operation-card">
+        <h2>Connected wallet</h2>
+        <p id="walletAddress">Connect a wallet to begin.</p>
+        <button id="personalDetailsButton" type="button">Personal details</button>
+    </div>
+
+    <section class="operation-grid">
+        <article class="card operation-card">
+            <h2>Get identity</h2>
+            <p>Read the public DID record for a wallet address.</p>
+            <input id="readIdentityAddress" placeholder="Wallet address">
+            <button id="getIdentityButton">Read identity</button>
+            <div id="getIdentityResult" class="result-panel">
+                <p class="result-message"></p><p class="result-data"></p><a class="result-link" target="_blank" rel="noreferrer"></a>
+            </div>
+        </article>
+
+        <article class="card operation-card">
+            <h2>Create identity</h2>
+            <input id="createIdentityDid" placeholder="DID, for example did:bel:123">
+            <input id="createIdentityDocument" placeholder="Document reference">
+            <input id="createIdentityAddress" placeholder="Wallet address">
+            <select id="createEntityType">
+                <option value="0">Employee</option>
+                <option value="1">Authority</option>
+                <option value="2">Founder</option>
+            </select>
+            <button id="registerIdentity">Register identity</button>
+            <div id="createIdentityResult" class="result-panel">
+                <p class="result-message"></p><p class="result-data"></p><a class="result-link" target="_blank" rel="noreferrer"></a>
+            </div>
+        </article>
+
+        <article class="card operation-card">
+            <h2>Update identity</h2>
+            <input id="updateIdentityAddress" placeholder="Wallet address">
+            <input id="updateIdentityDocument" placeholder="New document reference">
+            <select id="updateEntityType">
+                <option value="0">Employee</option>
+                <option value="1">Authority</option>
+                <option value="2">Founder</option>
+            </select>
+            <button id="updateIdentityButton">Update identity</button>
+            <div id="updateIdentityResult" class="result-panel">
+                <p class="result-message"></p><p class="result-data"></p><a class="result-link" target="_blank" rel="noreferrer"></a>
+            </div>
+        </article>
+
+        <article class="card operation-card">
+            <h2>Deactivate identity</h2>
+            <p>This marks the record inactive on-chain; it does not erase blockchain history.</p>
+            <input id="deleteIdentityAddress" placeholder="Wallet address">
+            <button id="deleteIdentityButton" class="button-danger">Deactivate identity</button>
+            <div id="deleteIdentityResult" class="result-panel">
+                <p class="result-message"></p><p class="result-data"></p><a class="result-link" target="_blank" rel="noreferrer"></a>
+            </div>
+        </article>
+    </section>
+
+    <article class="card operation-card">
+        <span id="personalDetailsSection" class="section-anchor"></span>
+        <h2>Complete private registry</h2>
+        <p>Authenticate once, encrypt the profile in SQL, register its hash on-chain, and upload encrypted documents.</p>
+        <input id="registryDid" placeholder="DID, for example did:bel:123">
+        <input id="registryName" placeholder="Full name">
+        <input id="registryAge" type="number" min="0" max="150" placeholder="Age">
+        <input id="registryPhone" type="tel" placeholder="Phone number">
+        <input id="registryEmail" type="email" placeholder="Email address">
+        <select id="registryEntityType">
+            <option value="0">Employee</option>
+            <option value="1">Authority</option>
+            <option value="2">Founder</option>
+        </select>
+        <label>Aadhaar document <input id="registryAadhaar" type="file"></label>
+        <label>PAN document <input id="registryPan" type="file"></label>
+        <label>Degree document <input id="registryDegree" type="file"></label>
+        <label>Bank account document <input id="registryBank" type="file"></label>
+        <button id="completeRegistryButton">Authenticate and register</button>
+        <div id="completeRegistryResult" class="result-panel">
+            <p class="result-message"></p><p class="result-data"></p><a class="result-link" target="_blank" rel="noreferrer"></a>
+        </div>
+    </article>
+
+    <section class="operation-grid private-management">
+        <article class="card operation-card">
+            <h2>View personal details</h2>
+            <p>Enter a DID to view its encrypted profile after wallet authentication.</p>
+            <input id="viewDetailsDid" placeholder="DID, for example did:bel:123">
+            <button id="viewDetailsButton" type="button">View details</button>
+            <pre id="viewDetailsResult" class="result-panel"></pre>
+        </article>
+
+        <article class="card operation-card">
+            <h2>Update personal details</h2>
+            <input id="updateDetailsDid" placeholder="DID">
+            <input id="updateDetailsName" placeholder="Full name">
+            <input id="updateDetailsAge" type="number" min="0" max="150" placeholder="Age">
+            <input id="updateDetailsPhone" type="tel" placeholder="Phone number">
+            <input id="updateDetailsEmail" type="email" placeholder="Email address">
+            <button id="updateDetailsButton" type="button">Update details</button>
+            <pre id="updateDetailsResult" class="result-panel"></pre>
+        </article>
+
+        <article class="card operation-card">
+            <h2>Delete personal details</h2>
+            <p>This permanently deletes the private SQL profile and encrypted documents. Blockchain history remains.</p>
+            <input id="deleteDetailsDid" placeholder="DID">
+            <button id="deleteDetailsButton" class="button-danger" type="button">Delete details</button>
+            <pre id="deleteDetailsResult" class="result-panel"></pre>
+        </article>
+    </section>
+</main>
+
+<script type="module" src="js/identity.js"></script>
+<script type="module" src="js/registry.js"></script>
+<script type="module" src="js/page-wallet.js"></script>
+</body>
+</html>

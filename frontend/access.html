@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Control</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">BEL | Access Control</div>
+    <div id="wallet">
+        <button id="pageConnectWallet">Connect Wallet</button>
+        <span id="pageWalletStatus">Not connected</span>
+    </div>
+</nav>
+
+<main>
+
+    <h1>Access Control</h1>
+
+    <div class="card">
+        <h2>Check User Role</h2>
+
+        <input
+            id="roleAddress"
+            placeholder="Wallet address"
+        >
+
+        <button id="checkRoleButton">
+            Check Role
+        </button>
+
+        <div id="roleResult" class="result-panel"><p class="result-message"></p><p class="result-data"></p><a class="result-link" target="_blank" rel="noreferrer"></a></div>
+    </div>
+
+    <div class="card">
+        <h2>Read Permissions</h2>
+        <input id="permissionAddress" placeholder="Wallet address">
+        <button id="checkPermissionButton">Check Permission</button>
+        <button id="checkRoleDetailsButton">Check Role Details</button>
+        <div id="permissionResult" class="result-panel"><p class="result-message"></p><p class="result-data"></p><a class="result-link" target="_blank" rel="noreferrer"></a></div>
+    </div>
+
+    <div class="card">
+        <h2>Contract Owner</h2>
+        <button id="checkOwnerButton">Read Contract Owner</button>
+        <div id="ownerResult" class="result-panel"><p class="result-message"></p><p class="result-data"></p><a class="result-link" target="_blank" rel="noreferrer"></a></div>
+    </div>
+
+
+    <div class="card">
+        <h2>Assign Role</h2>
+
+        <input
+            id="assignAddress"
+            placeholder="Wallet address"
+        >
+
+        <select id="assignRole">
+            <option value="1">ADMIN</option>
+            <option value="2">MANAGER</option>
+            <option value="3">AUDITOR</option>
+            <option value="4">EMPLOYEE</option>
+        </select>
+
+        <select id="rolePermission">
+            <option value="1">CREATE_ASSET</option>
+            <option value="2">ALLOCATE_ASSET</option>
+            <option value="3">TRANSFER_ASSET</option>
+            <option value="4">VIEW_ASSET</option>
+            <option value="5">AUDIT</option>
+            <option value="6">MANAGE_EMPLOYEES</option>
+        </select>
+
+        <button id="assignRoleButton">
+            Assign Role
+        </button>
+        <div id="assignRoleResult" class="result-panel"><p class="result-message"></p><p class="result-data"></p><a class="result-link" target="_blank" rel="noreferrer"></a></div>
+    </div>
+
+
+    <div class="card">
+        <h2>Grant Permission</h2>
+
+        <input id="grantAddress" placeholder="Wallet address">
+        <select id="grantPermission">
+            <option value="1">CREATE_ASSET</option>
+            <option value="2">ALLOCATE_ASSET</option>
+            <option value="3">TRANSFER_ASSET</option>
+            <option value="4">VIEW_ASSET</option>
+            <option value="5">AUDIT</option>
+            <option value="6">MANAGE_EMPLOYEES</option>
+        </select>
+
+        <button id="grantPermissionButton">
+            Grant Permission
+        </button>
+        <div id="grantPermissionResult" class="result-panel"><p class="result-message"></p><p class="result-data"></p><a class="result-link" target="_blank" rel="noreferrer"></a></div>
+    </div>
+
+
+    <div class="card">
+        <h2>Revoke Permission</h2>
+
+        <input id="revokeAddress" placeholder="Wallet address">
+        <select id="revokePermission">
+            <option value="1">CREATE_ASSET</option>
+            <option value="2">ALLOCATE_ASSET</option>
+            <option value="3">TRANSFER_ASSET</option>
+            <option value="4">VIEW_ASSET</option>
+            <option value="5">AUDIT</option>
+            <option value="6">MANAGE_EMPLOYEES</option>
+        </select>
+
+        <button id="revokePermissionButton">
+            Revoke Permission
+        </button>
+        <div id="revokePermissionResult" class="result-panel"><p class="result-message"></p><p class="result-data"></p><a class="result-link" target="_blank" rel="noreferrer"></a></div>
+    </div>
+
+    <div class="card">
+        <h2>Remove Role</h2>
+        <input id="removeRoleAddress" placeholder="Wallet address">
+        <button id="removeRoleButton">
+            Remove Role
+        </button>
+        <div id="removeRoleResult" class="result-panel"><p class="result-message"></p><p class="result-data"></p><a class="result-link" target="_blank" rel="noreferrer"></a></div>
+    </div>
+
+    <p id="accessStatus"></p>
+
+</main>
+
+<script type="module" src="js/access.js"></script>
+<script type="module" src="js/page-wallet.js"></script>
+
+</body>
+</html>
