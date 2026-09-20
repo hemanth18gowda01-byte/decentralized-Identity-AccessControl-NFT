@@ -1,11 +1,17 @@
 import hashlib
+import os
 import secrets
 import sqlite3
 import time
 from pathlib import Path
 
 
-DATABASE_PATH = Path(__file__).resolve().parent / "identity.sqlite3"
+DATABASE_PATH = Path(
+	os.getenv(
+		"DATABASE_PATH",
+		str(Path(__file__).resolve().parent / "identity.sqlite3"),
+	)
+)
 
 
 def connection() -> sqlite3.Connection:
