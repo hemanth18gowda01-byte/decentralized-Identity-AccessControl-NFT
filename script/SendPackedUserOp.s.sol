@@ -16,15 +16,18 @@ contract SendPackedUserOp is Script {
     address constant RANDOM_APPROVER = 0x6099506105B0Da195Dc9Ee35cdc12499dd652Cac;
     HelperConfigure helperConfig = new HelperConfigure();
 
-    function run() public { // arbitrum mainnet USDC address
-        
+    function run() public {
+        // arbitrum mainnet USDC address
+
         uint256 value = 0;
         address smartAccountAddress = DevOpsTools.get_most_recent_deployment("SmartAccount", block.chainid);
         address destination = vm.envAddress("EXECUTE_TARGET");
 
         bytes memory functionData = abi.encodeWithSelector(IERC20.approve.selector, RANDOM_APPROVER, 1e18);
-        bytes memory executeCalldata = abi.encodeWithSelector(SmartAccount.execute.selector, destination, value, functionData);
-        PackedUserOperation memory userOp = generateSignedUserOperation(executeCalldata, helperConfig.getConfig(), smartAccountAddress);
+        bytes memory executeCalldata =
+            abi.encodeWithSelector(SmartAccount.execute.selector, destination, value, functionData);
+        PackedUserOperation memory userOp =
+            generateSignedUserOperation(executeCalldata, helperConfig.getConfig(), smartAccountAddress);
         PackedUserOperation[] memory ops = new PackedUserOperation[](1);
         ops[0] = userOp;
 
@@ -32,8 +35,12 @@ contract SendPackedUserOp is Script {
         IEntryPoint(helperConfig.getConfig().entryPoint).handleOps(ops, payable(helperConfig.getConfig().account));
         vm.stopBroadcast();
     }
-    
-    function generateSignedUserOperation(bytes memory callData, HelperConfigure.NetworkConfig memory config, address smartAccount) public view returns(PackedUserOperation memory) {
+
+    function generateSignedUserOperation(
+        bytes memory callData,
+        HelperConfigure.NetworkConfig memory config,
+        address smartAccount
+    ) public view returns (PackedUserOperation memory) {
         // 1. Generate the unsigned data
         uint256 nonce = IEntryPoint(config.entryPoint).getNonce(smartAccount, 0);
         PackedUserOperation memory userOp = _generateUnsignedUserOperation(callData, smartAccount, nonce);
@@ -55,25 +62,27 @@ contract SendPackedUserOp is Script {
         userOp.signature = abi.encodePacked(r, s, v); // Note the order
         return userOp;
     }
-        
-    function _generateUnsignedUserOperation(bytes memory callData, address sender, uint256 nonce)internal pure returns(PackedUserOperation memory){
-    uint128 verificationGasLimit = 16777216;
-    uint128 callGasLimit = verificationGasLimit;
-    uint128 maxPriorityFeePerGas = 256;
-    uint128 maxFeePerGas = maxPriorityFeePerGas;
-    return PackedUserOperation({
-        sender: sender,
-        nonce: nonce,
-        initCode: hex"",
-        callData: callData,
-        accountGasLimits: bytes32(uint256(verificationGasLimit) << 128 | callGasLimit),
-        preVerificationGas: verificationGasLimit,
-        gasFees: bytes32(uint256(maxPriorityFeePerGas) << 128 | maxFeePerGas),
-        paymasterAndData: hex"",
-        signature: hex""
+
+    function _generateUnsignedUserOperation(bytes memory callData, address sender, uint256 nonce)
+        internal
+        pure
+        returns (PackedUserOperation memory)
+    {
+        uint128 verificationGasLimit = 16777216;
+        uint128 callGasLimit = verificationGasLimit;
+        uint128 maxPriorityFeePerGas = 256;
+        uint128 maxFeePerGas = maxPriorityFeePerGas;
+        return PackedUserOperation({
+            sender: sender,
+            nonce: nonce,
+            initCode: hex"",
+            callData: callData,
+            accountGasLimits: bytes32(uint256(verificationGasLimit) << 128 | callGasLimit),
+            preVerificationGas: verificationGasLimit,
+            gasFees: bytes32(uint256(maxPriorityFeePerGas) << 128 | maxFeePerGas),
+            paymasterAndData: hex"",
+            signature: hex""
         });
     }
-
 }
-
 

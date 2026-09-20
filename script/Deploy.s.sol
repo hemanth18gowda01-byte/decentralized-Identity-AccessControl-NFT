@@ -16,9 +16,8 @@ contract Deploy is Script {
 
     function run() external {
         (, SmartAccount smartAccount) = deploySmartAccount();
-        (Identity identity, AccessControl accessControl, DigitalAssetNFT digitalAssetNFT) = deployContracts(
-            address(smartAccount)
-        );
+        (Identity identity, AccessControl accessControl, DigitalAssetNFT digitalAssetNFT) =
+            deployContracts(address(smartAccount));
 
         StableCoinTransaction stableCoin = deployStableCoin();
         AssetMarketplace marketplace = deployMarketplace(address(stableCoin), address(smartAccount));

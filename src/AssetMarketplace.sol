@@ -21,7 +21,6 @@ contract AssetMarketplace is DigitalAssetNFT, StableCoinTransaction {
     event AssetSaleCompleted(uint256 indexed tokenId, address indexed buyer, uint256 salePrice);
     event AssetSaleCancelled(uint256 indexed tokenId, address indexed seller);
 
-
     function _buyAsset(uint256 _tokenId) external {
         AssetForSale storage sale = assetsForSale[_tokenId];
         require(sale.status, "Asset is not for sale");
@@ -31,10 +30,7 @@ contract AssetMarketplace is DigitalAssetNFT, StableCoinTransaction {
             usdcToken.allowance(msg.sender, address(this)) >= sale.salePrice,
             "Insufficient contract allowance. Approve USDC first"
         );
-        require(
-            usdcToken.transferFrom(msg.sender, sale.seller, sale.salePrice),
-            "Stablecoin payment failed"
-        );
+        require(usdcToken.transferFrom(msg.sender, sale.seller, sale.salePrice), "Stablecoin payment failed");
 
         _transfer(sale.seller, msg.sender, _tokenId);
         _finalizeAssetTransfer(_tokenId, msg.sender);
@@ -48,11 +44,7 @@ contract AssetMarketplace is DigitalAssetNFT, StableCoinTransaction {
         require(ownerOf(_tokenId) == msg.sender, "You are not the owner of this asset");
         require(_salePrice > 0, "Sale price should be greater than zero");
         assetsForSale[_tokenId] = AssetForSale({
-            tokenId: _tokenId,
-            seller: msg.sender,
-            salePrice: _salePrice,
-            status: true,
-            timeStamp: block.timestamp
+            tokenId: _tokenId, seller: msg.sender, salePrice: _salePrice, status: true, timeStamp: block.timestamp
         });
         emit AssetListedForSale(_tokenId, msg.sender, _salePrice);
     }
